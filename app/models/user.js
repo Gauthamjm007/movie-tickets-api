@@ -33,8 +33,8 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    required: true,
-    enum: ["Admin", "user"],
+    default: "User",
+    enum: ["Admin", "User"],
   },
   phone: {
     type: String,
@@ -67,7 +67,7 @@ userSchema.methods.generateToken = function () {
     createdAt: Number(new Date()),
   };
 
-  const token = jwt.sign(tokenData, "jwt@123");
+  const token = jwt.sign(tokenData, "nvest@123");
   user.tokens.push({
     token,
   });
@@ -125,7 +125,7 @@ userSchema.statics.findByToken = function (token) {
   const User = this;
   let tokenData;
   try {
-    tokenData = jwt.verify(token, "jwt@123");
+    tokenData = jwt.verify(token, "nvest@123");
   } catch (err) {
     return Promise.reject(err);
   }

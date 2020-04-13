@@ -1,9 +1,8 @@
 const Screen = require("../models/screen");
 
-
-const getSeatAvailableAtChoice = (screenName, numSeats, choice) => {
+const getSeatAvailableAtChoice = (screenId, numSeats, choice) => {
   return new Promise((resolve, reject) => {
-    Screen.findOne({ name: screenName }).then(
+    Screen.findOne({ _id: screenId }).then(
       (screen) => {
         if (!screen) return reject("No such screen name exist.");
         let choiceRow = choice.substring(0, 1);

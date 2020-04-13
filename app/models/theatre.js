@@ -1,6 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const GeoSchema = new Schema({
+  type: {
+    type: String,
+    default: "Point",
+  },
+  coordinates: {
+    type: [Number],
+    index: "2dsphere",
+  },
+});
+
 const theatreSchema = new Schema({
   name: {
     type: String,
@@ -16,12 +27,8 @@ const theatreSchema = new Schema({
   address: {
     type: String,
   },
-  geolocation: {
-    type: String,
-  },
+  location: GeoSchema,
 });
 
 const Theatre = mongoose.model("Theatre", theatreSchema);
 module.exports = Theatre;
-
-

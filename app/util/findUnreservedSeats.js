@@ -1,9 +1,9 @@
 const Screen = require("./../models/screen");
 
 //function to get unreserved seats for a given screen name.
-const getUnreservedSeats = (screenName) => {
+const getUnreservedSeats = (screenId) => {
   return new Promise((resolve, reject) => {
-    Screen.findOne({ name: screenName }).then(
+    Screen.findOne({ _id: screenId }).then(
       (screen) => {
         if (!screen)
           return reject(

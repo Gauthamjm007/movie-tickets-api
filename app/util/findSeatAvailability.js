@@ -1,9 +1,9 @@
 const Screen = require("../models/screen");
 
 //function to check if given seats are available to be booked.
-const isAvailable = (screenName, seats) => {
+const isAvailable = (screenId, seats) => {
   return new Promise((resolve, reject) => {
-    Screen.findOne({ name: screenName }).then(
+    Screen.findOne({ _id: screenId }).then(
       (screen) => {
         if (!screen) return reject("No such screen exist");
         for (var row in seats) {
