@@ -1,5 +1,13 @@
 # MOVIE BOOKING API
 
+This is a movie booking application for the users to book movies , the admin can only create the movies, theatres and show timings and etc.<br/>
+This is a NodeJS ,Express,MongoDB based application<br/>
+to run this you can do the following commands<br/>
+git clone https://github.com/Gauthamjm007/movie-tickets-api.git<br/>
+cd movie-tickets-api<br/>
+npm install<br/>
+nodemon index.js<br/>
+
 ## Packages Used
 
 mongoose<br/>
