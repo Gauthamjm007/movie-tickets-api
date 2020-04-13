@@ -115,7 +115,6 @@ sample data
 #### Screens CRUD Operation
 
 ```javascript
-
 //get all movies that are playing in different screens
 router.get("/screens", screenController.list);
 
@@ -125,13 +124,49 @@ router.delete("/screens/:id", authenticateUser, screenController.destroy);
 //create a screen
 router.post("/screens", authenticateUser, screenController.create);
 
-//reserve a seat
+//reserve a seat in a particular screen
 router.post(
   "/screens/:screen_id/reserve",
   authenticateUser,
   screenController.reserve
 );
+
+//get unreserved seat information : http://localhost:8000/screens/:screen_id/seats?status=unreserved
+//get if a particular seat is available or not
+//http://localhost:8000/screens/:screen_id/seats?numSeats={no of seats needed}&choice= {row alphabet}
 router.get("/screens/:screen_id/seats", screenController.infoseats);
+//list all movies by name
 router.get("/screens/movie/:id", screenController.listByMovie);
+//list all theatre running different movie
 router.get("/screens/theatre/:id", screenController.listByTheatre);
+```
+
+##### Screen Post
+
+```javascript
+{ "movie":"ObjectId of movie",
+"theatre":"ObjectId of theatre",
+"screen_no":"S1",
+"time":"10PM",
+"seatInfo": { "A": { "numberOfSeats": 10, "aisleSeats": [0, 5 ,6, 9] }, "B": { "numberOfSeats": 15, "aisleSeats": [0, 5 ,6, 9] }, "C": { "numberOfSeats": 20, "aisleSeats": [0, 5 ,6, 9] } } }
+```
+
+##### Reserve a seat
+
+```javascript
+{ "seats": { "A": [1, 2], "B": [ 3, 4] } }
+```
+
+
+##### get the available seats for a given screen ,Response body (example):
+
+```javascript
+{ "seats": { "A": [0, 1 ,2 ,6, 7, 8 , 9], "B": [0, 8 , 9]} }
+```
+
+
+##### API to get information of available tickets at a given position,Response body (example):
+
+```javascript
+{ "availableSeats": { "A": [3, 4] } }
 ```

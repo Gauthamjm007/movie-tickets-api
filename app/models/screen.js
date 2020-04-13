@@ -28,17 +28,11 @@ let ScreenSchema = new Schema({
     required: true,
   },
   screen_no: {
-    type: Schema.Types.ObjectId,
+    type: String,
   },
   time: {
     type: String,
     required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-    unique: true,
   },
   seatInfo: {
     type: Map,
