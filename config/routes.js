@@ -4,6 +4,7 @@ const usersController = require("../app/controllers/usersController");
 const authenticateUser = require("../app/middleware/authentication");
 const theatreController = require("../app/controllers/theatreController");
 const movieController = require("../app/controllers/movieController");
+const screenController = require("../app/controllers/screenController");
 
 router.post("/register", usersController.register);
 router.post("/login", usersController.login);
@@ -22,5 +23,11 @@ router.get("/theatre/:id", theatreController.show);
 router.put("/theatre", theatreController.update);
 router.post("/theatre", theatreController.create);
 router.delete("/theatre/:id", theatreController.destroy);
+
+router.get("/screens", screenController.list);
+router.delete("/screens/:id", screenController.destroy);
+router.post("/screens", screenController.create);
+router.post("/screens/:screen_name/reserve", screenController.reserve);
+router.get("/screens/:screen_name/seats", screenController.infoseats);
 
 module.exports = router;
