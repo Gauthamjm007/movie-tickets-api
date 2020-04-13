@@ -1,6 +1,27 @@
 # MOVIE BOOKING API
 
-## END POINTS
+## Packages Used
+
+mongoose<br/>
+express<br/>
+bcryptjs<br/>
+jsonwebtoken<br/>
+dotenv<br/>
+nodemailer<br/>
+cors<br/>
+lodash<br/>
+
+## Features
+
+higly secured pasword saving<br/>
+jwt based authentication<br/>
+automated mail sending<br/>
+book a particular seat<br/>
+see unreserved seat<br/>
+find movies by name <br/>
+find theatres<br/>
+
+### END POINTS
 
 #### User Authentication
 
@@ -148,7 +169,9 @@ router.get("/screens/theatre/:id", screenController.listByTheatre);
 "theatre":"ObjectId of theatre",
 "screen_no":"S1",
 "time":"10PM",
-"seatInfo": { "A": { "numberOfSeats": 10, "aisleSeats": [0, 5 ,6, 9] }, "B": { "numberOfSeats": 15, "aisleSeats": [0, 5 ,6, 9] }, "C": { "numberOfSeats": 20, "aisleSeats": [0, 5 ,6, 9] } } }
+"seatInfo": {
+ "A": { "numberOfSeats": 10, "aisleSeats": [0, 5 ,6, 9] },
+ "B": { "numberOfSeats": 15, "aisleSeats": [0, 5 ,6, 9] }}
 ```
 
 ##### Reserve a seat
@@ -157,13 +180,11 @@ router.get("/screens/theatre/:id", screenController.listByTheatre);
 { "seats": { "A": [1, 2], "B": [ 3, 4] } }
 ```
 
-
 ##### get the available seats for a given screen ,Response body (example):
 
 ```javascript
 { "seats": { "A": [0, 1 ,2 ,6, 7, 8 , 9], "B": [0, 8 , 9]} }
 ```
-
 
 ##### API to get information of available tickets at a given position,Response body (example):
 
